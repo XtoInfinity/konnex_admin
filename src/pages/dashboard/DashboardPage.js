@@ -1,11 +1,23 @@
 import React from 'react';
 import * as S from './DashboardStyled';
 import * as C from '../../components/common/CommonStyled';
-import logo from '../../assets/images/logo-white.png';
+import Header from '../../components/header/Header';
+import Navbar from '../../components/navbar/Navbar';
 
-const DashboardPage = ()=>{
+
+const DashboardPage = () => {
     return (
-<>Hey</>
+        <>
+                <S.Wrapper>
+                <Header/>
+
+                <S.SubWrapper>
+
+            <Navbar/>
+            </S.SubWrapper>
+
+        </S.Wrapper>
+        </>
     );
 }
 
