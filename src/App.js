@@ -1,11 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import GlobalStyle from './GlobalStyle';
+import DashboardPage from './pages/dashboard/DashboardPage';
+import LoginPage from './pages/login/LoginPage';
+
+
 
 function App() {
   return (
-    <div className="App">
-      Hey
-    </div>
+    <>
+                  <GlobalStyle />
+                  <BrowserRouter>
+                <Switch>
+                <Route exact path="/" component={LoginPage} />
+                <Route exact path="/" component={DashboardPage} />
+
+                  </Switch>
+                  </BrowserRouter>
+
+    </>
   );
 }
 
