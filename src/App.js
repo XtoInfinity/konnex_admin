@@ -2,6 +2,8 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 import DashboardPage from './pages/dashboard/DashboardPage';
 import LoginPage from './pages/login/LoginPage';
+import FeedbackPage from './pages/feedback/FeedbbackPage';
+import BugReportPage from './pages/bugreport/BugReportPage';
 import * as firebase from 'firebase';
 
 const firebaseConfig = {
@@ -20,14 +22,16 @@ firebase.default.initializeApp(firebaseConfig);
 function App() {
   return (
     <>
-                  <GlobalStyle />
-                  <BrowserRouter>
-                <Switch>
-                <Route exact path="/" component={LoginPage} />
-                <Route exact path="/home" component={DashboardPage} />
+      <GlobalStyle />
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={LoginPage} />
+          <Route exact path="/home" component={DashboardPage} />
+          <Route exact path="/feedback" component={FeedbackPage} />
+          <Route exact path="/bugReport" component={BugReportPage} />
 
-                  </Switch>
-                  </BrowserRouter>
+        </Switch>
+      </BrowserRouter>
 
     </>
   );
