@@ -152,9 +152,9 @@ const AnalyticsPage = () => {
                             {bugStatusMap ? bugStatusMap['Open'] : 0}
                         </div>
                         <div class="label">
-                            <a class={`ui blue label`}>
+                            <button class={`ui blue label`}>
                                 <div class="detail">Open</div>
-                            </a>
+                            </button>
                         </div>
                     </div>
                     <div class="statistic">
@@ -162,9 +162,9 @@ const AnalyticsPage = () => {
                             {bugStatusMap ? bugStatusMap['In Progress'] : 0}
                         </div>
                         <div class="label">
-                            <a class={`ui yellow label`}>
+                            <button class={`ui yellow label`}>
                                 <div class="detail">In Progress</div>
-                            </a>
+                            </button>
                         </div>
                     </div>
                     <div class="statistic">
@@ -172,9 +172,9 @@ const AnalyticsPage = () => {
                             {bugStatusMap ? bugStatusMap['Resolved'] : 0}
                         </div>
                         <div class="label">
-                            <a class={`ui green label`}>
+                            <button class={`ui green label`}>
                                 <div class="detail">Resolved</div>
-                            </a>
+                            </button>
                         </div>
                     </div>
                 </div>

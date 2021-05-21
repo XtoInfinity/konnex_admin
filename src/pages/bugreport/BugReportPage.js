@@ -14,10 +14,11 @@ const BugReportPage = () => {
     // let history = useHistory();
 
     const [bugReportList, setBugReportList] = useState([]);
+    const db = firebase.firestore();
+    const reportCollection = db.collection("report");
 
     const fetchData = async () => {
-        const db = firebase.firestore();
-        const data = await db.collection("report").get();
+        const data = await reportCollection.get();
         // Add the filer of applicationId on data
         data.docs.filter((element) => {
             element.data().appId = "";
@@ -35,17 +36,21 @@ const BugReportPage = () => {
                 let status = report.data().status;
                 let labelColor = status == "Open" ? "blue" : (status == "In Progress" ? "yellow" : "green");
                 let images = report.data().images;
-                console.log(images.length);
 
                 return (
                     <S.Card>
                         <S.MetaDataWrapper>
                             <S.CategoryWrapper><h2>{report.data().category}</h2></S.CategoryWrapper>
                             <S.LabelWrapper>
-                                <a class={`ui ${labelColor} image label`}>
+                                <select class="ui dropdown">
+                                    <option value="">Gender</option>
+                                    <option value="1">Male</option>
+                                    <option value="0">Female</option>
+                                </select>
+                                <button class={`ui ${labelColor} image label`}>
                                     Status
                                     <div class="detail">{report.data().status}</div>
-                                </a>
+                                </button>
                             </S.LabelWrapper>
                         </S.MetaDataWrapper>
                         <S.MetaDataWrapper>
