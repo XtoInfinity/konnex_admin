@@ -22,7 +22,7 @@ export const ArticleWrapper = styled.div`
     box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.5);
     padding: 20px 40px;
     margin: 0 40px 20px 40px;
-    width: 100%;
+    width: 90%;
 `;
 
 export const Delete = styled.div`
@@ -57,8 +57,8 @@ export const InputWrapper = styled.div`
     background-color: ${color.lightGrey};
     box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.5);
     padding: 20px 40px;
-    margin: 0 40px 20px 40px;
-    width: 100%;
+    margin: 20px 40px 20px 40px;
+    width: 90%;
 `;
 
 export const SubArticleWrapper = styled.div`

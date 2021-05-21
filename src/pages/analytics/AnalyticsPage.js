@@ -35,6 +35,8 @@ const AnalyticsPage = () => {
         let newLogList = logList.map((log) => {
             return log.data();
         });
+
+        // Doughnut Chart
         let labels = [];
         let data = [];
         newLogList.forEach((log) => {
@@ -47,6 +49,9 @@ const AnalyticsPage = () => {
         });
         setChartLabels(labels);
         setChartData(data);
+
+        // Line Chart
+
     }
 
     const fetchData = async () => {
@@ -186,6 +191,7 @@ const AnalyticsPage = () => {
                         </div>
                     </div>
                 </div>
+                <div class="ui divider"></div>
                 <S.ChartWrapper>
                     <DoughnutChart labels={chartLabels} dataArray={chartData}></DoughnutChart>
                 </S.ChartWrapper>

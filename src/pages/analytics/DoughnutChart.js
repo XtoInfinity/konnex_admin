@@ -1,10 +1,22 @@
 import React from 'react';
 import { Doughnut } from 'react-chartjs-2';
 
-
-
 const DoughnutChart = (props) => {
     const { labels, dataArray } = props;
+
+    const options = {
+        plugins: {
+            title: {
+                display: true,
+                text: 'Interactions per Screen',
+                padding: 20,
+                font: {
+                    size: 24
+                }
+            }
+        }
+    }
+
     const data = {
         labels, // List
         datasets: [
@@ -24,7 +36,7 @@ const DoughnutChart = (props) => {
     };
     return (
         <>
-            <Doughnut data={data} />
+            <Doughnut data={data} options={options} />
         </>);
 };
 

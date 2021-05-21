@@ -1,4 +1,4 @@
-import {React, useState, useEffect} from 'react';
+import { React, useState, useEffect } from 'react';
 import * as A from './ArticleStyled';
 import * as C from '../../components/common/CommonStyled';
 import firebase from "firebase/app";
@@ -24,7 +24,7 @@ const ArticlePage = () => {
                 }
             };
             reader.readAsDataURL(e.target.files[0]);
-        // if there is no file, set image back to null
+            // if there is no file, set image back to null
         } else {
             setImage(null);
         }
@@ -50,7 +50,7 @@ const ArticlePage = () => {
                 })
                 setDescription("")
                 setImage(null)
-                setTitle("") 
+                setTitle("")
                 fetchArticles()
             });
         }
@@ -84,35 +84,35 @@ const ArticlePage = () => {
                     <A.SubWrapper>
                         <A.Head>INPUT ARTICLE</A.Head>
                     </A.SubWrapper>
-                    <A.InputField placeholder="Enter your title" bottomMargin="20px"  onChange={e => setTitle(e.target.value)} value = {title}></A.InputField>
-                    <A.InputField placeholder="Enter your Description" bottomMargin="20px"  onChange={e => setDescription(e.target.value)} value = {description}></A.InputField>
-                    <input type="file" accept="image/x-png,image/jpeg" style={{paddingBottom: "20px"}} onChange={(e) => {onImageChange(e); }}/>
-                    <C.Button onClick = {()=>submitArticle()}>Submit</C.Button>
+                    <A.InputField placeholder="Enter your title" bottomMargin="20px" onChange={e => setTitle(e.target.value)} value={title}></A.InputField>
+                    <A.InputField placeholder="Enter your Description" bottomMargin="20px" onChange={e => setDescription(e.target.value)} value={description}></A.InputField>
+                    <input type="file" accept="image/x-png,image/jpeg" style={{ paddingBottom: "20px" }} onChange={(e) => { onImageChange(e); }} />
+                    <C.Button onClick={() => submitArticle()}>Submit</C.Button>
                 </A.InputWrapper>
 
-                { articles.length !== 0 ? articles.map((obj) => {
+                {articles.length !== 0 ? articles.map((obj) => {
                     return (
-                    <A.ArticleWrapper>
-                        <A.Img>
-                            <img src={obj.image} height="100"/>
-                        </A.Img>
-                        <A.SubArticleWrapper>
-                            <A.Head>
-                                {obj.title}
-                                <A.SubHead>
-                                    {new Date(obj.createdAt.seconds*1000).toDateString()} {new Date(obj.createdAt.seconds*1000).toLocaleTimeString()} / {obj.appId}
-                                </A.SubHead>
-                            </A.Head>
-                            
-                            {obj.description} <br></br><br></br>
-                            <A.Delete>
-                                Views: {obj.views}
-                                <A.Button onClick = {()=>deleteArticle(obj)}>Delete</A.Button>
-                            </A.Delete>
-                        </A.SubArticleWrapper>
-                    </A.ArticleWrapper>
+                        <A.ArticleWrapper>
+                            <A.Img>
+                                <img src={obj.image} height="100" />
+                            </A.Img>
+                            <A.SubArticleWrapper>
+                                <A.Head>
+                                    {obj.title}
+                                    <A.SubHead>
+                                        {new Date(obj.createdAt.seconds * 1000).toDateString()} {new Date(obj.createdAt.seconds * 1000).toLocaleTimeString()} / {obj.appId}
+                                    </A.SubHead>
+                                </A.Head>
+
+                                {obj.description} <br></br><br></br>
+                                <A.Delete>
+                                    Views: {obj.views}
+                                    <A.Button onClick={() => deleteArticle(obj)}>Delete</A.Button>
+                                </A.Delete>
+                            </A.SubArticleWrapper>
+                        </A.ArticleWrapper>
                     );
-                }) : <h3>No Articles</h3> }
+                }) : <h3>No Articles</h3>}
             </A.Wrapper>
         </>
     );

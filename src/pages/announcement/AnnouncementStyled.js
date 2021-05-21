@@ -22,7 +22,13 @@ export const AnnouncementWrapper = styled.div`
     box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.5);
     padding: 20px 40px;
     margin: 0 40px 20px 40px;
-    width: 100%;
+    width: 90%;
+`;
+
+export const Delete = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 `;
 
 export const Button = styled.button`
@@ -42,12 +48,6 @@ export const Button = styled.button`
     }
 `;
 
-export const Delete = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-`;
-
 export const InputWrapper = styled.div`
     display: flex;
     flex-direction: column;
@@ -57,8 +57,8 @@ export const InputWrapper = styled.div`
     background-color: ${color.lightGrey};
     box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.5);
     padding: 20px 40px;
-    margin: 0 40px 20px 40px;
-    width: 100%;
+    margin: 20px 40px 20px 40px;
+    width: 90%;
 `;
 
 export const SubAnnouncementWrapper = styled.div`
