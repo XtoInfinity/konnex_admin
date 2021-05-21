@@ -4,6 +4,8 @@ import DashboardPage from './pages/dashboard/DashboardPage';
 import LoginPage from './pages/login/LoginPage';
 import FeedbackPage from './pages/feedback/FeedbbackPage';
 import BugReportPage from './pages/bugreport/BugReportPage';
+import ArticlePage from './pages/article/ArticlePage';
+import AnnouncementPage from './pages/announcement/AnnouncementPage';
 import * as firebase from 'firebase';
 
 const firebaseConfig = {
@@ -29,6 +31,8 @@ function App() {
           <Route exact path="/home" component={DashboardPage} />
           <Route exact path="/feedback" component={FeedbackPage} />
           <Route exact path="/bugReport" component={BugReportPage} />
+          <Route exact path="/article" component={ArticlePage} />
+          <Route exact path="/announcement" component={AnnouncementPage} />
 
         </Switch>
       </BrowserRouter>
