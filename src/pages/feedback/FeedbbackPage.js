@@ -23,6 +23,11 @@ const FeedbackPage = () => {
 
     return (
         <S.Wrapper>
+            <select class="ui dropdown">
+                <option value="">Feedback Sentiment</option>
+                <option value="1">Positive</option>
+                <option value="0">Negative</option>
+            </select>
             {feedbackList.map((feedback) => {
                 let isPositive = feedback.data().sentiment == "positive";
                 return (
@@ -34,7 +39,7 @@ const FeedbackPage = () => {
                     </S.Card>
                 )
             })}
-        </S.Wrapper >
+        </S.Wrapper>
     );
 }
 
