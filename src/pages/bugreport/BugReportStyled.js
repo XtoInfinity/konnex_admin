@@ -6,10 +6,11 @@ export const Wrapper = styled.div`
     align-items: center;
     justify-content: top;
     flex-direction: column;
-    height:100%;
     background-color:${color.greyHover};
     padding: 20px;
     width: 100%;
+    overflow: scroll;
+    height: 100%;
 `;
 
 export const Card = styled.div`
@@ -19,7 +20,6 @@ export const Card = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    overflow: hidden;
     background-color: white;
     box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.5);
     padding: 20px;
@@ -64,7 +64,7 @@ export const MessageWrapper = styled.div`
     align-items: center;
     justify-content: center;
     width: 80%;
-    margin-top: 20px;
+    margin: 20px;
 `;
 
 export const SentimentWrapper = styled.div`
@@ -77,4 +77,17 @@ export const SentimentWrapper = styled.div`
     padding: 2px 0;
     margin-bottom: 0px;
     color: ${color.gray};
+`;
+
+export const ImageWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items: space-evenly;
+    justify-content: center;
+    width: 100%;
+    margin: 5px;
+`;
+
+export const Image = styled.img`
+    height: 200px;
 `;
