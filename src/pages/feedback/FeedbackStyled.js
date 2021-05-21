@@ -6,9 +6,10 @@ export const Wrapper = styled.div`
     justify-content: top;
     align-items: center;
     flex-direction: column;
-    height:100vh;
+    height:100%;
     background-color:${color.greyHover};
     padding: 20px;
+    width: 100%;
 `;
 
 export const Card = styled.div`
