@@ -3,26 +3,22 @@ import color from '../../config/color';
 
 export const Wrapper = styled.div`
     display: flex;
-    align-items: center;
     justify-content: top;
+    align-items: center;
     flex-direction: column;
     height:100vh;
     background-color:${color.greyHover};
-    padding: 20px
+    padding: 20px;
 `;
 
 export const Card = styled.div`
     display: flex;
     width: 80%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    overflow: hidden;
-    background-color: white;
-    box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.5);
-    padding: 20px;
-    margin: 20px;
+    align-items: stretch;
+    justify-content: left;
+    height: 100px;
+    padding: 10px;
+    margin: 10px;
 `;
 
 export const UserWrapper = styled.div`

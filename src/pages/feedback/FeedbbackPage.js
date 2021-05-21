@@ -24,19 +24,17 @@ const FeedbackPage = () => {
     return (
         <S.Wrapper>
             {feedbackList.map((feedback) => {
+                let isPositive = feedback.data().sentiment == "positive";
                 return (
-                    <S.Card>
-                        <S.MetaDataWrapper>
-                            <S.UserWrapper>{feedback.data().userId}</S.UserWrapper>
-                            <S.SentimentWrapper isPositive={feedback.data().sentiment == "positive"}>{feedback.data().sentiment}</S.SentimentWrapper>
-                        </S.MetaDataWrapper>
-                        <S.MessageWrapper>
-                            {feedback.data().message}
-                        </S.MessageWrapper>
+                    <S.Card >
+                        <div class="ui raised segment">
+                            <a class={`ui ${isPositive ? 'green' : 'red'} ribbon label`}> {feedback.data().sentiment}</a>
+                            <span>{feedback.data().message}</span>
+                        </div>
                     </S.Card>
                 )
             })}
-        </S.Wrapper>
+        </S.Wrapper >
     );
 }
 
