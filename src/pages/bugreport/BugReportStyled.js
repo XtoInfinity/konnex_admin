@@ -27,8 +27,8 @@ export const Card = styled.div`
 
 export const CategoryWrapper = styled.div`
     display: flex;
-    align-items: space-between;
-    justify-content: center;
+    align-items: center;
+    justify-content: left;
     width: 30%;
     padding: 2px 0
 `;
@@ -39,14 +39,22 @@ export const MetaDataWrapper = styled.div`
     align-items: space-evenly;
     justify-content: space-between;
     width: 100%;
-    margin: 10px;
+    margin: 2px;
 `;
 
 export const LabelWrapper = styled.div`
     display: flex;
-    align-items: stretch;
-    justify-content: right;
-    width: 20%;
+    width: 27%;
+    padding: 2px 0;
+`;
+
+export const IconWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10%;
+    margin-right: 10px;
+    margin-left: 22px;
 `;
 
 export const MessageWrapper = styled.div`
@@ -68,42 +76,4 @@ export const SentimentWrapper = styled.div`
     padding: 2px 0;
     margin-bottom: 0px;
     color: ${color.gray};
-`;
-
-export const Head = styled.div`
-    color: white;
-    font-size: 1.5rem;
-   margin-left: 20px;
-   font-weight: 500;
-   letter-spacing: 1px;
-`;
-
-
-export const Image = styled.img`
-    height: 40px;
-`;
-
-export const InputField = styled.input`
-    width: 320px;
-    height: 50px;
-    border-radius: 5px;
-    border: 1px solid ${color.grey};
-    padding: 0 20px;
-    font-size: 0.9rem;
-    color: ${color.greyShade5};
-    font-weight: 600;
-    margin: 0 20px;
-    margin-bottom: ${props => props.bottomMargin ?? '0'};
-    transition: background-color 0.5s;
-
-    ::placeholder{
-        color: ${color.grey};
-    }
-
-    &:focus{
-        background-color: white;
-        outline: none;
-        border: 1px solid ${color.primary};
-
-    }
 `;
