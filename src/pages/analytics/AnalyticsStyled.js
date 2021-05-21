@@ -25,6 +25,10 @@ export const Card = styled.div`
     margin: 10px;
 `;
 
+export const ChartWrapper = styled.div`
+    width: 400px;
+`;
+
 export const IconWrapper = styled.div`
     align-items: center;
     justify-content: center;

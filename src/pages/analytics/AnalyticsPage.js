@@ -15,13 +15,14 @@ const AnalyticsPage = () => {
     const [bugList, setBugList] = useState([]);
     const [bugStatusMap, setBugStatusMap] = useState({});
     const [logList, setLogList] = useState([]);
+    const [chartLabels, setChartLabels] = useState([]);
+    const [chartData, setChartData] = useState([]);
 
     // const userByDate()
 
     const bugsByStatus = () => {
         let bugMap = {};
         bugList.forEach((bug) => {
-            console.log(bug.id);
             let status = bug.data().status;
             if (!(status in bugMap))
                 bugMap[status] = 0;
@@ -34,7 +35,18 @@ const AnalyticsPage = () => {
         let newLogList = logList.map((log) => {
             return log.data();
         });
-        // newLogList.forEach()
+        let labels = [];
+        let data = [];
+        newLogList.forEach((log) => {
+            let index = labels.indexOf(log.screen);
+            if (index == -1) {
+                labels.push(log.screen);
+                data.push(1);
+            } else
+                data[index]++;
+        });
+        setChartLabels(labels);
+        setChartData(data);
     }
 
     const fetchData = async () => {
@@ -174,9 +186,9 @@ const AnalyticsPage = () => {
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="ui segment">
-                <DoughnutChart></DoughnutChart>
+                <S.ChartWrapper>
+                    <DoughnutChart labels={chartLabels} dataArray={chartData}></DoughnutChart>
+                </S.ChartWrapper>
             </div>
         </S.Wrapper >
     );
