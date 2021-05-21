@@ -1,5 +1,4 @@
 import {React, useState, useEffect} from 'react';
-import * as S from '../dashboard/DashboardStyled';
 import * as A from './AnnouncementStyled';
 import * as C from '../../components/common/CommonStyled';
 import firebase from 'firebase';
@@ -44,7 +43,7 @@ const AnnouncementPage = () => {
 
     return (
         <>
-            <S.Wrapper>
+            <A.Wrapper>
                 <A.AnnouncementWrapper>
                     <A.SubWrapper>
                         <A.Head>INPUT ANNOUNCEMENT</A.Head>
@@ -67,7 +66,7 @@ const AnnouncementPage = () => {
                     </A.AnnouncementWrapper>
                     );
                 })}
-            </S.Wrapper>
+            </A.Wrapper>
         </>
     );
 }

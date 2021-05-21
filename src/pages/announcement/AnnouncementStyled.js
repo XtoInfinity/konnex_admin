@@ -3,11 +3,13 @@ import color from '../../config/color';
 
 export const Wrapper = styled.div`
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
-    height:100vh;
+    justify-content: flex-start;
+    height:100%;
+    width: 100%;
     background-color:${color.greyHover};
-    
+    overflow: scroll;
 `;
 
 export const AnnouncementWrapper = styled.div`
@@ -16,16 +18,11 @@ export const AnnouncementWrapper = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    overflow: hidden;
     background-color: white;
     box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.5);
-    padding-bottom: 20px;
-    padding-top: 20px;
-    padding-left: 40px;
-    padding-right: 40px;
-    margin-left: 40px;
-    margin-bottom: 20px;
-    margin-right: 40px;
+    padding: 20px 40px;
+    margin: 0 40px 20px 40px;
+    width: 100%;
 `;
 
 export const Head = styled.div`

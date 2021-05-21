@@ -2,7 +2,8 @@ import styled from 'styled-components';
 import color from '../../config/color';
 
 export const Wrapper = styled.div`
-    width: 300px;
+    width: 320px;
+    margin-right:20px;
     background-color: #F9F9F9;
     height: 100%;
     display: flex;

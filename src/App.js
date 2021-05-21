@@ -29,10 +29,10 @@ function App() {
         <Switch>
           <Route exact path="/" component={LoginPage} />
           <Route exact path="/home" component={DashboardPage} />
-          <Route exact path="/feedback" component={FeedbackPage} />
-          <Route exact path="/bugReport" component={BugReportPage} />
-          <Route exact path="/article" component={ArticlePage} />
-          <Route exact path="/announcement" component={AnnouncementPage} />
+          <Route exact path="/announcement" render={()=><DashboardPage data= {1}/>} />
+          <Route exact path="/feedback" render={()=><DashboardPage data= {2}/>} />
+          <Route exact path="/bugReport" render={()=><DashboardPage data= {3}/>} />
+          <Route exact path="/article" render={()=><DashboardPage data= {4}/>} />
 
         </Switch>
       </BrowserRouter>
