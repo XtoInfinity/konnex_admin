@@ -12,8 +12,8 @@ export const Button = styled.button`
     transition: background-color 0.2s, transform 0.2s;
 
     &:hover{
-        background-color: ${color.primary};
-
+        background-color: ${color.primaryDark};
+        transform: scale(1.02);
         cursor: pointer;
     }
 `;

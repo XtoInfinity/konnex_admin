@@ -2,14 +2,15 @@ import styled from 'styled-components';
 import color from '../../config/color';
 
 export const Wrapper = styled.div`
-    width: 320px;
-    margin-right:20px;
+    min-width: 300px;
     background-color: #F9F9F9;
     height: 100%;
     display: flex;
     flex-direction: column;
     box-shadow: 2px 0px 16px 0 rgba(0, 0, 0, 0.2); 
     overflow-y: auto;
+    background-color: white;
+
     ::-webkit-scrollbar-track
     {
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0);

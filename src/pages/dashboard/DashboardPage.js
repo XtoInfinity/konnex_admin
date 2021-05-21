@@ -9,6 +9,8 @@ import ArticlePage from '../article/ArticlePage';
 import AnnouncementPage from '../announcement/AnnouncementPage';
 import ConversationPage from '../conversation/ConversationPage';
 import AnalyticsPage from '../analytics/AnalyticsPage';
+import NavigationPage from '../navigation/NavigationPage';
+import NavigationDetailPage from '../navigation/NavigationDetailPage';
 
 const DashboardPage = (props) => {
 
@@ -19,8 +21,10 @@ const DashboardPage = (props) => {
             case 2: return (<Feedback></Feedback>);
             case 3: return (<BugReportPage></BugReportPage>);
             case 4: return (<ArticlePage></ArticlePage>);
-            case 5: return (<ConversationPage></ConversationPage>);
-            case 6: return (<AnalyticsPage></AnalyticsPage>);
+            case 5: return (<NavigationPage></NavigationPage>);
+            case 6: return (<NavigationDetailPage></NavigationDetailPage>);
+            case 7: return (<ConversationPage></ConversationPage>);
+            case 8: return (<AnalyticsPage></AnalyticsPage>);
         }
     }
 
