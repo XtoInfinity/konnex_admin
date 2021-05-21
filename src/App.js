@@ -6,8 +6,9 @@ import FeedbackPage from './pages/feedback/FeedbbackPage';
 import BugReportPage from './pages/bugreport/BugReportPage';
 import ArticlePage from './pages/article/ArticlePage';
 import AnnouncementPage from './pages/announcement/AnnouncementPage';
-import * as firebase from 'firebase';
 import NavigationDetailPage from './pages/navigation/NavigationDetailPage';
+import firebase from "firebase/app";
+import "firebase/storage";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCqeYI9R_S2uj8mALUa2nmY5K6ThIXy-Xg",
@@ -20,6 +21,7 @@ const firebaseConfig = {
 };
 
 firebase.default.initializeApp(firebaseConfig);
+export const storage = firebase.storage();
 
 
 function App() {
