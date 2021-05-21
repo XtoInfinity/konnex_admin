@@ -6,31 +6,22 @@ export const Wrapper = styled.div`
     align-items: stretch;
     flex-direction: column;
     background-color:${color.greyHover};
-    padding: 20px;
+    padding: 30px;
     width: 100%;
     overflow: scroll;
     height: 100%;
 `;
 
-export const Card = styled.div`
+export const MultiChartWrapper = styled.div`
     display: flex;
-    width: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    background-color: white;
-    box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.5);
-    padding: 10px;
-    margin: 10px;
+    flex-direction: row;
+    justify-content: space-evenly;
 `;
 
-export const ChartWrapper = styled.div`
+export const DNChartWrapper = styled.div`
     width: 400px;
 `;
 
-export const IconWrapper = styled.div`
-    align-items: center;
-    justify-content: center;
-    width: 80px;
+export const LineChartWrapper = styled.div`
+    width: 600px;
 `;

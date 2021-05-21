@@ -6,6 +6,7 @@ import firebase from 'firebase';
 import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 import DoughnutChart from './DoughnutChart';
+import LineChart from './LineChart';
 
 const AnalyticsPage = () => {
 
@@ -17,6 +18,8 @@ const AnalyticsPage = () => {
     const [logList, setLogList] = useState([]);
     const [chartLabels, setChartLabels] = useState([]);
     const [chartData, setChartData] = useState([]);
+    const [lineChartLabels, setLineChartLabels] = useState([]);
+    const [lineChartData, setLineChartData] = useState([]);
 
     // const userByDate()
 
@@ -39,6 +42,18 @@ const AnalyticsPage = () => {
         // Doughnut Chart
         let labels = [];
         let data = [];
+        let lineLabels = [];
+        let lineData = [];
+        let currentTime = moment();
+
+        // Prefill lineLabels
+        let begin = moment().subtract(24, 'hours');
+        for (let i = 0; i < 24; i++) {
+            lineLabels.push(`${begin.format('DD MMM HH')}:00`);
+            begin = begin.add(1, 'hours');
+            lineData.push(0);
+        }
+
         newLogList.forEach((log) => {
             let index = labels.indexOf(log.screen);
             if (index == -1) {
@@ -46,12 +61,19 @@ const AnalyticsPage = () => {
                 data.push(1);
             } else
                 data[index]++;
+
+            let timestamp = moment(log.time);
+            let diff = currentTime.diff(timestamp, 'hours');
+            if (diff < 24) {
+                let label = `${timestamp.format('DD MMM HH')}:00`;
+                let lineIndex = lineLabels.indexOf(label);
+                lineData[lineIndex]++;
+            }
         });
         setChartLabels(labels);
         setChartData(data);
-
-        // Line Chart
-
+        setLineChartLabels(lineLabels);
+        setLineChartData(lineData);
     }
 
     const fetchData = async () => {
@@ -105,43 +127,32 @@ const AnalyticsPage = () => {
     return (
         <S.Wrapper >
             <div class="ui segment">
-                <a class="ui blue ribbon label">Users</a>
-                <div class="ui four statistics">
+                <a class="ui blue ribbon huge label"><i class="user icon"></i>Users</a>
+                <div class="ui two statistics">
                     <div class="statistic">
                         <div class="value">
-                            <i class="user icon"></i>{userList.length}
+                            {userList.length}
                         </div>
                         <div class="label">
                             Total
                     </div>
                     </div>
                     <div class="statistic">
-                        <div class="text value">
-                            Three<br />
-                            Thousand
-                    </div>
-                        <div class="label">
-                            Signups
-                    </div>
-                    </div>
-
-                    <div class="statistic">
                         <div class="value">
-                            <img src="/images/avatar/small/joe.jpg" class="ui circular inline image" />
-                            42
-                    </div>
+                            7
+                        </div>
                         <div class="label">
-                            Team Members
+                            Active
                     </div>
                     </div>
                 </div>
             </div>
             <div class="ui segment">
-                <a class="ui red ribbon label">Bugs</a>
+                <a class="ui red ribbon huge label"><i class="bug icon"></i>Bugs</a>
                 <div class="ui four statistics">
                     <div class="statistic">
                         <div class="value">
-                            <i class="bug icon"></i>{bugList.length}
+                            {bugList.length}
                         </div>
                         <div class="label">
                             Reported
@@ -180,11 +191,11 @@ const AnalyticsPage = () => {
                 </div>
             </div>
             <div class="ui segment">
-                <a class="ui green ribbon label">Interactions</a>
+                <a class="ui green ribbon huge label"><i class="hand pointer icon"></i>Interactions</a>
                 <div class="ui four statistics">
                     <div class="statistic">
                         <div class="value">
-                            <i class="hand pointer icon"></i>{logList.length}
+                            {logList.length}
                         </div>
                         <div class="label">
                             Count
@@ -192,9 +203,15 @@ const AnalyticsPage = () => {
                     </div>
                 </div>
                 <div class="ui divider"></div>
-                <S.ChartWrapper>
-                    <DoughnutChart labels={chartLabels} dataArray={chartData}></DoughnutChart>
-                </S.ChartWrapper>
+                <S.MultiChartWrapper>
+                    <S.DNChartWrapper>
+                        <DoughnutChart labels={chartLabels} dataArray={chartData}></DoughnutChart>
+                    </S.DNChartWrapper>
+                    <S.LineChartWrapper>
+                        <LineChart labels={lineChartLabels} dataArray={lineChartData}></LineChart>
+                    </S.LineChartWrapper>
+                </S.MultiChartWrapper>
+
             </div>
         </S.Wrapper >
     );

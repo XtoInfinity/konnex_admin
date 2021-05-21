@@ -42,11 +42,6 @@ const BugReportPage = () => {
                         <S.MetaDataWrapper>
                             <S.CategoryWrapper><h2>{report.data().category}</h2></S.CategoryWrapper>
                             <S.LabelWrapper>
-                                <select class="ui dropdown">
-                                    <option value="">Gender</option>
-                                    <option value="1">Male</option>
-                                    <option value="0">Female</option>
-                                </select>
                                 <button class={`ui ${labelColor} image label`}>
                                     Status
                                     <div class="detail">{report.data().status}</div>
