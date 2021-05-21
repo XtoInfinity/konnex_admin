@@ -11,7 +11,7 @@ const Navbar = () => {
     <S.Wrapper>
       
     <S.Head>Engagements</S.Head>
-    <S.SubHead >Navigation</S.SubHead>
+    <S.SubHead onClick={() => history.push("/navigation")}>Navigation</S.SubHead>
 
     <S.SubHead  onClick={() => history.push("/announcement")}>Anouncements</S.SubHead>
     <S.SubHead onClick={() => history.push("/article")}>Articles</S.SubHead>

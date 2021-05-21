@@ -7,6 +7,7 @@ import BugReportPage from './pages/bugreport/BugReportPage';
 import ArticlePage from './pages/article/ArticlePage';
 import AnnouncementPage from './pages/announcement/AnnouncementPage';
 import * as firebase from 'firebase';
+import NavigationDetailPage from './pages/navigation/NavigationDetailPage';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCqeYI9R_S2uj8mALUa2nmY5K6ThIXy-Xg",
@@ -33,6 +34,8 @@ function App() {
           <Route exact path="/feedback" render={()=><DashboardPage data= {2}/>} />
           <Route exact path="/bugReport" render={()=><DashboardPage data= {3}/>} />
           <Route exact path="/article" render={()=><DashboardPage data= {4}/>} />
+          <Route exact path="/navigation" render={()=><DashboardPage data= {5}/>} />
+          <Route exact path="/navigationDetail" render={()=><DashboardPage data= {6} />}/>
 
         </Switch>
       </BrowserRouter>

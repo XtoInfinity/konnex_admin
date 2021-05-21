@@ -7,6 +7,8 @@ import Feedback from '../feedback/FeedbbackPage';
 import BugReportPage from '../bugreport/BugReportPage';
 import ArticlePage from '../article/ArticlePage';
 import AnnouncementPage from '../announcement/AnnouncementPage';
+import NavigationPage from '../navigation/NavigationPage';
+import NavigationDetailPage from '../navigation/NavigationDetailPage';
 
 const DashboardPage = (props) => {
 
@@ -22,7 +24,10 @@ const DashboardPage = (props) => {
 
         }else if(value === 4){
             return ArticlePage();
-
+        }else if(value === 5){
+            return NavigationPage();
+        }else if(value === 6){
+            return NavigationDetailPage();
         }
     }
 
