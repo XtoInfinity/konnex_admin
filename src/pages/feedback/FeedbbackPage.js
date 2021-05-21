@@ -10,12 +10,25 @@ const FeedbackPage = () => {
     // let history = useHistory();
 
     const [feedbackList, setFeedbackList] = useState([]);
+    const [originalFeedbackList, setOriginalFeedbackList] = useState([]);
 
     const fetchData = async () => {
         const db = firebase.firestore();
         const data = await db.collection("feedback").get();
         setFeedbackList(data.docs);
+        setOriginalFeedbackList(data.docs);
     };
+
+    const filterFeedback = (value) => {
+        if (value == "") {
+            setFeedbackList(originalFeedbackList);
+            return;
+        }
+        let filteredFeedbackList = originalFeedbackList.filter((feedback) => {
+            return (feedback.data().sentiment == value);
+        })
+        setFeedbackList(filteredFeedbackList);
+    }
 
     useEffect(() => {
         fetchData();
@@ -23,22 +36,22 @@ const FeedbackPage = () => {
 
     return (
         <S.Wrapper>
-            <select class="ui dropdown">
+            <select class="ui dropdown" onChange={({ target: { value } }) => filterFeedback(value)}>
                 <option value="">Feedback Sentiment</option>
-                <option value="1">Positive</option>
-                <option value="0">Negative</option>
+                <option value="positive">Positive</option>
+                <option value="negative">Negative</option>
             </select>
-            {feedbackList.map((feedback) => {
-                let isPositive = feedback.data().sentiment == "positive";
-                return (
-                    <S.Card >
+            <S.FeedbackWrapper>
+                {feedbackList.map((feedback) => {
+                    let isPositive = feedback.data().sentiment == "positive";
+                    return (
                         <div class="ui raised segment">
                             <a class={`ui ${isPositive ? 'green' : 'red'} ribbon label`}> {feedback.data().sentiment}</a>
-                            <span>{feedback.data().message}</span>
+                            <h4>{feedback.data().message}</h4>
                         </div>
-                    </S.Card>
-                )
-            })}
+                    )
+                })}
+            </S.FeedbackWrapper>
         </S.Wrapper>
     );
 }
