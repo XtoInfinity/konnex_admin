@@ -20,6 +20,7 @@ const ArticlePage = () => {
             description: description,
             image: image,
             title: title,
+            views: 0,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         })
         setDescription("")
@@ -39,12 +40,12 @@ const ArticlePage = () => {
 
     useEffect(() => {
         fetchArticles()
-    }, [firebase]);
+    }, []);
 
     return (
         <>
             <A.Wrapper>
-                <A.ArticleWrapper>
+                <A.InputWrapper>
                     <A.SubWrapper>
                         <A.Head>INPUT ARTICLE</A.Head>
                     </A.SubWrapper>
@@ -52,20 +53,30 @@ const ArticlePage = () => {
                     <A.InputField placeholder="Enter your Image" bottomMargin="20px"  onChange={e => setImage(e.target.value)} value = {image}></A.InputField>
                     <A.InputField placeholder="Enter your title" bottomMargin="20px"  onChange={e => setTitle(e.target.value)} value = {title}></A.InputField>
                     <C.Button onClick = {()=>submitArticle()}>Submit</C.Button>
-                </A.ArticleWrapper>
+                </A.InputWrapper>
 
-                {articles.map((obj) => {
+                { articles.length != 0 ? articles.map((obj) => {
                     return (
                     <A.ArticleWrapper>
-                        <A.Head>
-                        {obj.appId} <br></br><br></br>
-                        </A.Head>
-                        {obj.description} <br></br><br></br>
-                        {obj.title} <br></br><br></br>
-                        <img src={obj.image} height="100"/>
+                        <A.Img>
+                            <img src={obj.image} height="100"/>
+                        </A.Img>
+                        <A.SubArticleWrapper>
+                            <A.Head>
+                                {obj.title}
+                                <A.SubHead>
+                                    {new Date(obj.createdAt.seconds*1000).toDateString()} {new Date(obj.createdAt.seconds*1000).toLocaleTimeString()} / {obj.appId}
+                                </A.SubHead>
+                            </A.Head>
+                            
+                            {obj.description} <br></br><br></br>
+                            Views: {obj.views}
+
+                            
+                        </A.SubArticleWrapper>
                     </A.ArticleWrapper>
                     );
-                })}
+                }) : <h3>No Articles</h3> }
             </A.Wrapper>
         </>
     );

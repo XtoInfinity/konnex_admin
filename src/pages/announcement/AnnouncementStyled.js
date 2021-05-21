@@ -14,24 +14,60 @@ export const Wrapper = styled.div`
 
 export const AnnouncementWrapper = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    background-color: white;
+    background-color: ${color.lightGrey};
     box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.5);
     padding: 20px 40px;
     margin: 0 40px 20px 40px;
     width: 100%;
 `;
 
+export const InputWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background-color: ${color.lightGrey};
+    box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.5);
+    padding: 20px 40px;
+    margin: 0 40px 20px 40px;
+    width: 100%;
+`;
+
+export const SubAnnouncementWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 20px 40px;
+    width: 100%;
+`;
+
+export const Img = styled.div`
+    background-color: ${color.pink};
+    height: 200px;
+    width: 300px;
+    text-align: center;
+    padding-top: 20px;
+`;
+
 export const Head = styled.div`
     color: black;
     font-size: 1.5rem;
     margin-top: 20px;
-   margin-left: 20px;
+    margin-bottom: 20px;
    font-weight: 500;
    letter-spacing: 1px;
+`;
+
+export const SubHead = styled.div`
+    color: ${color.grey};
+    margin-top: 4px;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 1px;
 `;
 
 export const SubWrapper = styled.div`   
@@ -39,7 +75,6 @@ export const SubWrapper = styled.div`
     flex-direction: row;
     align-items: center;
     justify-content:start;
-    background-color: white;
 `;
 
 export const InputField = styled.input`

@@ -6,6 +6,7 @@ const color = {
     greyHover: '#F8F8F8',
     blackShade1: '#0f2130',
     green: '#A1EF8B',
-    red: '#D52941'
+    red: '#D52941',
+    pink: '#ffb3b3'
 }
 export default color;

@@ -13,13 +13,14 @@ const AnnouncementPage = () => {
 
     async function submitAnnouncement() {
         const db = firebase.firestore();
-        const data = await db.collection("article")
+        const data = await db.collection("announcement")
         const docId = uuidv4()
         await data.doc(docId).set({
             appId: "randomString",
             description: description,
             image: image,
             title: title,
+            views: 0,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         })
         setDescription("")
@@ -39,12 +40,12 @@ const AnnouncementPage = () => {
 
     useEffect(() => {
         fetchAnnouncement()
-    }, [firebase]);
+    }, []);
 
     return (
         <>
             <A.Wrapper>
-                <A.AnnouncementWrapper>
+                <A.InputWrapper>
                     <A.SubWrapper>
                         <A.Head>INPUT ANNOUNCEMENT</A.Head>
                     </A.SubWrapper>
@@ -52,20 +53,30 @@ const AnnouncementPage = () => {
                     <A.InputField placeholder="Enter your Image" bottomMargin="20px"  onChange={e => setImage(e.target.value)} value = {image}></A.InputField>
                     <A.InputField placeholder="Enter your title" bottomMargin="20px"  onChange={e => setTitle(e.target.value)} value = {title}></A.InputField>
                     <C.Button onClick = {()=>submitAnnouncement()}>Submit</C.Button>
-                </A.AnnouncementWrapper>
+                </A.InputWrapper>
 
-                {announcements.map((obj) => {
+                { announcements.length != 0 ? announcements.map((obj) => {
                     return (
                     <A.AnnouncementWrapper>
-                        <A.Head>
-                        {obj.appId} <br></br><br></br>
-                        </A.Head>
-                        {obj.description} <br></br><br></br>
-                        {obj.title} <br></br><br></br>
-                        <img src={obj.image} height="100"/>
+                        <A.Img>
+                            <img src={obj.image} height="100"/>
+                        </A.Img>
+                        <A.SubAnnouncementWrapper>
+                            <A.Head>
+                                {obj.title}
+                                <A.SubHead>
+                                    {new Date(obj.createdAt.seconds*1000).toDateString()} {new Date(obj.createdAt.seconds*1000).toLocaleTimeString()} / {obj.appId}
+                                </A.SubHead>
+                            </A.Head>
+                            
+                            {obj.description} <br></br><br></br>
+                            Views: {obj.views}
+
+                            
+                        </A.SubAnnouncementWrapper>
                     </A.AnnouncementWrapper>
                     );
-                })}
+                }) : <h3>No Announcements</h3> }
             </A.Wrapper>
         </>
     );
