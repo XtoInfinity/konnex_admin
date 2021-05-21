@@ -9,6 +9,8 @@ export const Wrapper = styled.div`
     flex-direction: column;
     box-shadow: 2px 0px 16px 0 rgba(0, 0, 0, 0.2); 
     overflow-y: auto;
+    background-color: white;
+
     ::-webkit-scrollbar-track
     {
         -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0);

@@ -18,7 +18,6 @@ const DashboardPage = (props) => {
             return AnnouncementPage();
         }else if(value === 2){
             return Feedback();
-
         }else if(value === 3){
             return BugReportPage();
 

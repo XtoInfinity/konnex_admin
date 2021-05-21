@@ -9,6 +9,8 @@ export const Wrapper = styled.div `
     height: 100%;
     overflow: scroll;
     padding: 20px 20px;
+    background-color:whitesmoke;
+
 `;
 
 export const HeadWrapper = styled.div `

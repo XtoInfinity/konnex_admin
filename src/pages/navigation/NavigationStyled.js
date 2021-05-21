@@ -10,6 +10,8 @@ export const Wrapper = styled.div `
     height: 100%;
     overflow: scroll;
     padding: 20px 20px;
+    background-color:whitesmoke;
+
 `;
 
 export const Grid = styled.div`
@@ -20,6 +22,8 @@ export const Grid = styled.div`
 `;
 
 export const Card = styled.div`
+    background-color:white;
+
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -34,6 +38,8 @@ export const Card = styled.div`
 `;
 
 export const AddCard = styled.div`
+    background-color:white;
+
     display: flex;
     flex-direction: column;
     align-items: center;

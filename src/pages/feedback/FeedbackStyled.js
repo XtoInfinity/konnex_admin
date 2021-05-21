@@ -7,9 +7,10 @@ export const Wrapper = styled.div`
     align-items: center;
     flex-direction: column;
     height:100%;
-    background-color:${color.greyHover};
+    background-color:whitesmoke;
     padding: 20px;
     width: 100%;
+    overflow: scroll;
 `;
 
 export const FeedbackWrapper = styled.div`
