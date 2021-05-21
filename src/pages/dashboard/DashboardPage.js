@@ -8,24 +8,19 @@ import BugReportPage from '../bugreport/BugReportPage';
 import ArticlePage from '../article/ArticlePage';
 import AnnouncementPage from '../announcement/AnnouncementPage';
 import ConversationPage from '../conversation/ConversationPage';
+import AnalyticsPage from '../analytics/AnalyticsPage';
 
 const DashboardPage = (props) => {
 
     const getPage = () => {
         const value = props.data;
-        if (value === 1) {
-            return AnnouncementPage();
-        } else if (value === 2) {
-            return Feedback();
-
-        } else if (value === 3) {
-            return BugReportPage();
-
-        } else if (value === 4) {
-            return ArticlePage();
-
-        } else if (value == 5) {
-            return ConversationPage();
+        switch (value) {
+            case 1: return (<AnnouncementPage></AnnouncementPage >);
+            case 2: return (<Feedback></Feedback>);
+            case 3: return (<BugReportPage></BugReportPage>);
+            case 4: return (<ArticlePage></ArticlePage>);
+            case 5: return (<ConversationPage></ConversationPage>);
+            case 6: return (<AnalyticsPage></AnalyticsPage>);
         }
     }
 

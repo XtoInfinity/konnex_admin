@@ -34,6 +34,7 @@ function App() {
           <Route exact path="/bugReport" render={() => <DashboardPage data={3} />} />
           <Route exact path="/article" render={() => <DashboardPage data={4} />} />
           <Route exact path="/conversation" render={() => <DashboardPage data={5} />} />
+          <Route exact path="/analytics" render={() => <DashboardPage data={6} />} />
 
         </Switch>
       </BrowserRouter>
