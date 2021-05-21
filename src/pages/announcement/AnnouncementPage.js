@@ -40,6 +40,7 @@ const AnnouncementPage = () => {
                 const data = await db.collection("announcement")
                 const docId = uuidv4()
                 await data.doc(docId).set({
+                    id: docId,
                     appId: "randomString",
                     description: description,
                     image: url,
@@ -53,6 +54,13 @@ const AnnouncementPage = () => {
                 fetchAnnouncement()
             });
         }
+    }
+
+    async function deleteAnnouncement(obj) {
+        const db = firebase.firestore();
+        const data = await db.collection("announcement")
+        await data.doc(obj.id).delete()
+        fetchAnnouncement()
     }
 
     async function fetchAnnouncement() {
@@ -97,9 +105,10 @@ const AnnouncementPage = () => {
                             </A.Head>
                             
                             {obj.description} <br></br><br></br>
-                            Views: {obj.views}
-
-                            
+                            <A.Delete>
+                                Views: {obj.views}
+                                <A.Button onClick = {()=>deleteAnnouncement(obj)}>Delete</A.Button>
+                            </A.Delete>
                         </A.SubAnnouncementWrapper>
                     </A.AnnouncementWrapper>
                     );

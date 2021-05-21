@@ -40,6 +40,7 @@ const ArticlePage = () => {
                 const data = await db.collection("article")
                 const docId = uuidv4()
                 await data.doc(docId).set({
+                    id: docId,
                     appId: "randomString",
                     description: description,
                     image: url,
@@ -53,6 +54,13 @@ const ArticlePage = () => {
                 fetchArticles()
             });
         }
+    }
+
+    async function deleteArticle(obj) {
+        const db = firebase.firestore();
+        const data = await db.collection("article")
+        await data.doc(obj.id).delete()
+        fetchArticles()
     }
 
     async function fetchArticles() {
@@ -97,9 +105,10 @@ const ArticlePage = () => {
                             </A.Head>
                             
                             {obj.description} <br></br><br></br>
-                            Views: {obj.views}
-
-                            
+                            <A.Delete>
+                                Views: {obj.views}
+                                <A.Button onClick = {()=>deleteArticle(obj)}>Delete</A.Button>
+                            </A.Delete>
                         </A.SubArticleWrapper>
                     </A.ArticleWrapper>
                     );

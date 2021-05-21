@@ -25,6 +25,29 @@ export const ArticleWrapper = styled.div`
     width: 100%;
 `;
 
+export const Delete = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`;
+
+export const Button = styled.button`
+    background-color: ${color.primary};
+    color: white;
+    border: none;
+    font-size:1rem;
+    font-weight: 500;
+    padding: 9px 12px;
+    border-radius: 5px;
+    transition: background-color 0.2s, transform 0.2s;
+
+    &:hover{
+        background-color: ${color.primaryDark};
+        transform: scale(1.02);
+        cursor: pointer;
+    }
+`;
+
 export const InputWrapper = styled.div`
     display: flex;
     flex-direction: column;
