@@ -20,6 +20,9 @@ const AnalyticsPage = () => {
     const [chartData, setChartData] = useState([]);
     const [lineChartLabels, setLineChartLabels] = useState([]);
     const [lineChartData, setLineChartData] = useState([]);
+    const [pollData, setPollData] = useState([]);
+    const [pollResult, setPollResult] = useState([]);
+    const pollColors = ['golden yellow', 'purple', 'orange', 'teal', 'gray', 'black']
 
     // const userByDate()
 
@@ -32,6 +35,20 @@ const AnalyticsPage = () => {
             bugMap[status]++;
         })
         setBugStatusMap(bugMap);
+    }
+
+    const pollStatistics = () => {
+        let result = {};
+
+        pollData.options && pollData.options.forEach((pollOption) => {
+            result[pollOption.optionName] = 0;
+        });
+
+        pollData.attemptedUsers && pollData.attemptedUsers.forEach((response) => {
+            result[response.answer]++;
+        });
+
+        setPollResult(result);
     }
 
     const applicationStatistics = () => {
@@ -84,7 +101,17 @@ const AnalyticsPage = () => {
         setBugList(data.docs);
         data = await db.collection('application').doc('b9RdbkE3hCvpjyw9S2PQ').collection('logs').get()
         setLogList(data.docs);
+        data = await db.collection('poll').get();
+        data.forEach((poll) => {
+            if (poll.data().appId == 'b9RdbkE3hCvpjyw9S2PQ') {
+                setPollData(poll.data());
+            }
+        });
     }
+
+    useEffect(() => {
+        pollStatistics();
+    }, [pollData]);
 
     useEffect(() => {
         bugsByStatus();
@@ -211,6 +238,25 @@ const AnalyticsPage = () => {
                         <LineChart labels={lineChartLabels} dataArray={lineChartData}></LineChart>
                     </S.LineChartWrapper>
                 </S.MultiChartWrapper>
+
+            </div>
+            <div class="ui segment">
+                <a class="ui black ribbon huge label"><i class="chart bar icon"></i>Poll</a>
+                <h2>{pollData.title}</h2>
+                <h4>{pollData.description}</h4>
+                <div class="ui divider"></div>
+                {pollData.options && pollData.options.map((pollOption, index) => {
+                    return (
+                        <div class={`ui active ${pollColors[index]} indicating progress`}>
+                            <div class="bar"
+                                style={{ "width": `${pollResult[pollOption.optionName] / pollData.attemptedUsers.length * 100}%` }}>
+                                <S.PollValue>
+                                    {pollResult[pollOption.optionName]}/{pollData.attemptedUsers.length}
+                                </S.PollValue>
+                            </div>
+                            <div class="label">{pollOption.optionName}</div>
+                        </div>)
+                })}
 
             </div>
         </S.Wrapper >

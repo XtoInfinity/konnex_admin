@@ -25,3 +25,10 @@ export const DNChartWrapper = styled.div`
 export const LineChartWrapper = styled.div`
     width: 600px;
 `;
+
+export const PollValue = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 5px;
+`;

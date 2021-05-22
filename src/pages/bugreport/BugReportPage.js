@@ -59,7 +59,7 @@ const BugReportPage = () => {
                                 <S.IconWrapper>
                                     <CalendarCheckmark></CalendarCheckmark>
                                 </S.IconWrapper>
-                                {moment(Date(report.data().createdAt)).format("DD MMM YYYY")}
+                                {moment(Date(report.data().createdAt).toString()).format("DD MMM YYYY HH:MM")}
                             </S.CategoryWrapper>
                         </S.MetaDataWrapper>
                         <div class="ui horizontal divider">Report</div>
