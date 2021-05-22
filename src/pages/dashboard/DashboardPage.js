@@ -11,6 +11,7 @@ import ConversationPage from '../conversation/ConversationPage';
 import AnalyticsPage from '../analytics/AnalyticsPage';
 import NavigationPage from '../navigation/NavigationPage';
 import NavigationDetailPage from '../navigation/NavigationDetailPage';
+import NavigationAddPage from '../navigation/NavigationAddPage';
 
 const DashboardPage = (props) => {
 
@@ -25,6 +26,8 @@ const DashboardPage = (props) => {
             case 6: return (<NavigationDetailPage></NavigationDetailPage>);
             case 7: return (<ConversationPage></ConversationPage>);
             case 8: return (<AnalyticsPage></AnalyticsPage>);
+            case 9: return (<NavigationAddPage></NavigationAddPage>);
+
         }
     }
 

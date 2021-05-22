@@ -48,7 +48,7 @@ const NavigationPage = () => {
                     <S.AddCard>
                     <S.Head>Add New Workflow</S.Head>
                     <S.SubText>Click on the below button to create a new navigation workflow</S.SubText>
-                    <C.Button>Add Workflow</C.Button>
+                    <C.Button onClick={() => history.push({pathname:"/navigationAdd"},)}>Add Workflow</C.Button>
                     </S.AddCard>
                     {dataCards}
                 </S.Grid>

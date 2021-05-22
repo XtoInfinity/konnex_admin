@@ -4,8 +4,13 @@ import Logo from '../../assets/images/logo.png';
 import color from '../../config/color';
 import * as C from '../common/CommonStyled';
 import {LogoutCircleR} from '@styled-icons/remix-line/LogoutCircleR';
+import { useHistory } from 'react-router';
 
 const Header = ()=>{
+
+    let history = useHistory();
+
+
     return (
         <S.Wrapper>
             <S.SubWrapper>
@@ -24,7 +29,7 @@ const Header = ()=>{
 
                 </S.RightWrapper>
                 <S.RightWrapper marginLeft>
-                    <LogoutCircleR height = '35px'/>
+                    <LogoutCircleR height = '35px' onClick={() => history.push({pathname:"/"},)}/>
                     <S.Text fontSize = '0.9rem' color = {color.brownShade1}>LOG OUT</S.Text>
 
                 </S.RightWrapper>

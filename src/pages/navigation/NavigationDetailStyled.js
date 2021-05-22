@@ -31,6 +31,7 @@ export const Card = styled.div`
     transition:all 0.3s cubic-bezier(.2,.8,.1,1) ;
     padding: 20px;
     margin-bottom: 20px;
+    background-color: white;
 `;
 
 export const ScreenName = styled.div `

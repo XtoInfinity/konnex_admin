@@ -49,6 +49,7 @@ const NavigationDetailPage = (props) => {
                         <S.InstructionWrapper>
 
                         {step.instructions.map((instruction, index)=>getInstruction(instruction, index))} 
+                        
                         </S.InstructionWrapper>
 
                     </S.Card>
