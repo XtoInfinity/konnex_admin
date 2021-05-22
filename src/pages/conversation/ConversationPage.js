@@ -52,6 +52,14 @@ const ConversationPage = () => {
 
     return (
         <S.Wrapper>
+            <div class="ui horizontal segments">
+                <div class="ui segment">
+                    <h2>Threads</h2>
+                </div>
+                <div class="ui segment">
+                    <h2>Chat</h2>
+                </div>
+            </div>
             <div class="ui two column grid">
                 <div class="column">
                     {Object.keys(conversationMap).length != 0 ? Object.keys(conversationMap).map((convoId) => {
@@ -100,7 +108,14 @@ const ConversationPage = () => {
                             </ConversationCard>
                         )
                     }) :
-                        <p>No Conversations</p>}
+                        (
+                            <div class="ui placeholder segment">
+                                <div class="ui icon header">
+                                    <i class="message icon"></i>
+                                        Select a thread to read the Chat History
+                                    </div>
+                            </div>
+                        )}
                     <S.MessageBox>
                         <div class="ui huge icon input">
                             <input type="text" placeholder="Write Message" value={message} onChange={(event) => {
