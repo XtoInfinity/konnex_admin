@@ -31,6 +31,13 @@ export const Delete = styled.div`
     justify-content: space-between;
 `;
 
+export const Edit = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
+
 export const Button = styled.button`
     background-color: ${color.primary};
     color: white;
