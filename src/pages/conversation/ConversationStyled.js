@@ -15,17 +15,18 @@ export const Wrapper = styled.div`
 
 export const AdminConversationCard = styled.div`
     display: flex;
-    margin: 20px;
+    margin: 10px;
 `;
 
 export const MessageBox = styled.div`
     display: flex;
-    align-items: stretch;
-    margin: 20px;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
 `;
 
 export const UserConversationCard = styled.div`
     display: flex;
     justify-content: flex-end;
-    margin: 20px;
+    margin: 10px;
 `;

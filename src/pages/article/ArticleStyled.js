@@ -25,6 +25,13 @@ export const ArticleWrapper = styled.div`
     width: 90%;
 `;
 
+export const Edit = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
+
 export const Delete = styled.div`
     display: flex;
     flex-direction: row;
@@ -95,7 +102,7 @@ export const SubHead = styled.div`
 
 export const SubWrapper = styled.div`   
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content:start;
 `;

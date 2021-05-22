@@ -9,8 +9,10 @@ const ArticlePage = () => {
     const [articles, setArticles] = useState([]);
 
     const [description, setDescription] = useState("");
+    const [newDescription, setNewDescription] = useState("");
     const [image, setImage] = useState(null);
     const [title, setTitle] = useState("");
+    const [editBool, setEditBool] = useState([]);
 
     const onImageChange = (e) => {
         const reader = new FileReader();
@@ -19,7 +21,6 @@ const ArticlePage = () => {
         if (file) {
             reader.onload = () => {
                 if (reader.readyState === 2) {
-                    console.log(file);
                     setImage(file);
                 }
             };
@@ -56,6 +57,19 @@ const ArticlePage = () => {
         }
     }
 
+    async function editArticle(obj) {
+        if (newDescription != "") {
+            const db = firebase.firestore();
+            const data = await db.collection("article")
+            await data.doc(obj.id).update({
+                description: newDescription,
+            })
+            setNewDescription("")
+            fetchArticles()
+        }
+
+    }
+
     async function deleteArticle(obj) {
         const db = firebase.firestore();
         const data = await db.collection("article")
@@ -67,11 +81,31 @@ const ArticlePage = () => {
         const db = firebase.firestore();
         const data = await db.collection("article").get();
         const obj = []
+        let edit = []
         data.docs.map(doc => {
+            let ob = {}
+            ob.id = doc.data().id
+            ob.edit = false
+            edit.push(ob)
             obj.push(doc.data())
         });
         setArticles(obj)
+        setEditBool(edit)
     };
+
+    async function toggleEdit(obj) {
+        const tempObj = []
+        for (let a of editBool) {
+            if (a.id === obj.id) {
+                a.edit = true
+            } else {
+                a.edit = false
+            }
+            tempObj.push(a)
+        }
+        setEditBool(tempObj)
+        setNewDescription("")
+    }
 
     useEffect(() => {
         fetchArticles()
@@ -109,6 +143,25 @@ const ArticlePage = () => {
                                     Views: {obj.views}
                                     <A.Button onClick={() => deleteArticle(obj)}>Delete</A.Button>
                                 </A.Delete>
+                                <A.Edit>
+                                    {editBool.map((val) => {
+                                        return (
+                                            <A.Edit>
+                                                { val.id == obj.id ? <A.Edit>
+                                                    {
+                                                        !val.edit ?
+                                                            <A.Button onClick={() => toggleEdit(obj)}>Edit</A.Button> :
+                                                            <A.SubWrapper>
+                                                                <A.InputField placeholder="Enter new Description" bottomMargin="20px" onChange={e => setNewDescription(e.target.value)} value={newDescription}></A.InputField>
+                                                                <C.Button onClick={() => editArticle(obj)}>Edit</C.Button>
+                                                            </A.SubWrapper>
+                                                    }
+                                                </A.Edit> : <div></div>}
+                                            </A.Edit>
+                                        )
+
+                                    })}
+                                </A.Edit>
                             </A.SubArticleWrapper>
                         </A.ArticleWrapper>
                     );
