@@ -22,6 +22,17 @@ export const SubWrapper = styled.div`
     justify-content: center;
 `;
 
+export const LogoWrapper = styled.div`
+    display: flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: center;
+    &:hover{
+        cursor: pointer;
+        transform: scale(1.05);
+    }
+`;
+
 export const Image = styled.img`
     height: ${(props)=>props.height};
     margin-right: ${(props)=>props.marginBottom ?? '1vw'};
@@ -50,5 +61,19 @@ export const RightWrapper = styled.div`
     justify-content: center;
     align-items: ${(props)=>props.alignEnd ?'flex-end':'center'};
     margin-left: ${(props)=>props.marginLeft&&'1vw'};
+
+`;
+
+export const LogWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: ${(props)=>props.alignEnd ?'flex-end':'center'};
+    margin-left: ${(props)=>props.marginLeft&&'1vw'};
+    transition: 0.2s;
+    &:hover{
+        cursor: pointer;
+        transform: scale(1.05);
+    }
 
 `;

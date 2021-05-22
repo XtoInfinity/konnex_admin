@@ -13,10 +13,10 @@ const Header = ()=>{
 
     return (
         <S.Wrapper>
-            <S.SubWrapper>
+            <S.LogoWrapper onClick={() => history.push({pathname:"/navigation"},)}>
                 <S.Image src = {Logo} height = '50px'/>
                 <C.LineHead>KONNEX</C.LineHead>
-            </S.SubWrapper>
+            </S.LogoWrapper>
             <S.Divider/>
             <S.SubWrapper>
                 <S.Text fontSize = '1.4rem' color = {color.brownShade1}>Admin Dashboard</S.Text>
@@ -28,11 +28,11 @@ const Header = ()=>{
                     <S.Text fontSize = '1.1rem' color = 'black' >DEEPAK NAYAK</S.Text>
 
                 </S.RightWrapper>
-                <S.RightWrapper marginLeft>
-                    <LogoutCircleR height = '35px' onClick={() => history.push({pathname:"/"},)}/>
+                <S.LogWrapper marginLeft onClick={() => history.push({pathname:"/"},)}>
+                    <LogoutCircleR height = '35px'/>
                     <S.Text fontSize = '0.9rem' color = {color.brownShade1}>LOG OUT</S.Text>
 
-                </S.RightWrapper>
+                </S.LogWrapper>
             </S.SubWrapper>
         </S.Wrapper>
     );

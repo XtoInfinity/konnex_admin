@@ -18,7 +18,7 @@ const LoginPage = () => {
         const data = await db.collection("admin").get();
         data.docs.map(doc=>{
             if(doc.data().name === name && doc.data().password === password){
-                history.push('/home');
+                history.push('/navigation');
             }
         }, );
       };
