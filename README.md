@@ -8,3 +8,10 @@ Admin Panel Features
 - Share important announcements through the admin dashboard. 
 - Create Polls in order to survey your user base. 
 - Add Articles/FAQs into the support system for the end-user.
+
+To run the application
+- npm i
+- npm start
+
+To build the application
+- npm run build
