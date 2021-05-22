@@ -43,7 +43,7 @@ const AnnouncementPage = () => {
                 const docId = uuidv4()
                 await data.doc(docId).set({
                     id: docId,
-                    appId: "randomString",
+                    appId: "b9RdbkE3hCvpjyw9S2PQ",
                     description: description,
                     image: url,
                     title: title,
@@ -117,33 +117,44 @@ const AnnouncementPage = () => {
             <A.Wrapper>
                 <A.InputWrapper>
                     <A.SubWrapper>
-                        <A.Head>INPUT ANNOUNCEMENT</A.Head>
+                        <A.Head>Add New ANNOUNCEMENT</A.Head>
                     </A.SubWrapper>
+                    <A.InputRow>
+
                     <A.InputField placeholder="Enter your title" bottomMargin="20px" onChange={e => setTitle(e.target.value)} value={title}></A.InputField>
-                    <A.InputField placeholder="Enter your Description" bottomMargin="20px" onChange={e => setDescription(e.target.value)} value={description}></A.InputField>
                     <input type="file" accept="image/x-png,image/jpeg" style={{ paddingBottom: "20px" }} onChange={(e) => { onImageChange(e); }} />
+
+                    </A.InputRow>
+
+                    <A.DescriptionField placeholder="Enter your Description" bottomMargin="20px" onChange={e => setDescription(e.target.value)} value={description} rows = {"10"}></A.DescriptionField>
                     <C.Button onClick={() => submitAnnouncement()}>Submit</C.Button>
                 </A.InputWrapper>
 
                 {announcements.length !== 0 ? announcements.map((obj) => {
                     return (
                         <A.AnnouncementWrapper>
-                            <A.Img>
-                                <img src={obj.image} height="100" />
+                            <A.Img src={obj.image}>
                             </A.Img>
                             <A.SubAnnouncementWrapper>
+                            <A.Row>
+
                                 <A.Head>
+
                                     {obj.title}
+                                    
+
                                     <A.SubHead>
                                         {new Date(obj.createdAt.seconds * 1000).toDateString()} {new Date(obj.createdAt.seconds * 1000).toLocaleTimeString()} / {obj.appId}
                                     </A.SubHead>
+                                    
                                 </A.Head>
+                                <A.Button onClick={() => deleteAnnouncement(obj)}>Delete</A.Button>
 
-                                {obj.description} <br></br><br></br>
+                                    </A.Row>
+                                <A.Description>{obj.description}</A.Description>
+
                                 <A.Delete>
                                     Views: {obj.views}
-                                    <A.Button onClick={() => deleteAnnouncement(obj)}>Delete</A.Button>
-                                </A.Delete>
                                 <A.Edit>
                                     {editBool.map((val) => {
                                         return (
@@ -163,6 +174,8 @@ const AnnouncementPage = () => {
 
                                     })}
                                 </A.Edit>
+                                </A.Delete>
+
                             </A.SubAnnouncementWrapper>
                         </A.AnnouncementWrapper>
                     );

@@ -18,8 +18,8 @@ export const ArticleWrapper = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    background-color: ${color.lightGrey};
-    box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.5);
+    background-color: white;
+    box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.2);
     padding: 20px 40px;
     margin: 0 40px 20px 40px;
     width: 90%;
@@ -61,8 +61,8 @@ export const InputWrapper = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 5px;
-    background-color: ${color.lightGrey};
-    box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.5);
+    background-color: white;
+    box-shadow: 0px 0px 7px 1px rgba(0,0,0,0.2);
     padding: 20px 40px;
     margin: 20px 40px 20px 40px;
     width: 90%;
@@ -75,12 +75,13 @@ export const SubArticleWrapper = styled.div`
     width: 100%;
 `;
 
-export const Img = styled.div`
+export const Img = styled.img`
     background-color: ${color.pink};
-    height: 200px;
+    height: 300px;
     width: 300px;
     text-align: center;
-    padding-top: 20px;
+    object-fit: cover;
+
 `;
 
 export const Head = styled.div`
@@ -100,11 +101,34 @@ export const SubHead = styled.div`
     letter-spacing: 1px;
 `;
 
+export const Description = styled.div`
+    color: ${color.grey};
+    margin-top: 4px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    line-height: 1.5rem;
+    text-align: justify;
+    margin-bottom: 20px;
+`;
 export const SubWrapper = styled.div`   
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content:start;
+`;
+
+export const Row = styled.div`   
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
+`;
+export const InputRow = styled.div`   
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content:space-between;
 `;
 
 export const InputField = styled.input`
@@ -116,6 +140,30 @@ export const InputField = styled.input`
     font-size: 0.9rem;
     color: ${color.greyShade5};
     font-weight: 600;
+    margin: 0 20px;
+    margin-bottom: ${props => props.bottomMargin ?? '0'};
+    transition: background-color 0.5s;
+
+    ::placeholder{
+        color: ${color.grey};
+    }
+
+    &:focus{
+        background-color: white;
+        outline: none;
+        border: 1px solid ${color.primary};
+
+    }
+`;
+
+export const DescriptionField = styled.textarea`
+    width: 590px;
+    border-radius: 5px;
+    border: 1px solid ${color.grey};
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: ${color.greyShade5};
+    font-weight: 400;
     margin: 0 20px;
     margin-bottom: ${props => props.bottomMargin ?? '0'};
     transition: background-color 0.5s;
